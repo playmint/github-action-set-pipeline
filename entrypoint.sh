@@ -19,3 +19,8 @@ fly -t self set-pipeline \
 	-p "${CONCOURSE_PIPELINE_NAME}" \
 	-c "${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_CONFIG}" \
 	${OPTIONAL_ARGS}
+
+if [[ "${CONCOURSE_PIPELINE_PAUSED}" == "false" ]]; then
+	fly -t self unpause-pipeline \
+		-p "${CONCOURSE_PIPELINE_NAME}"
+fi

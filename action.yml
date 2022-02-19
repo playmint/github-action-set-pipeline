@@ -22,6 +22,10 @@ inputs:
   pipeline-vars:
     description: 'path to a YAML file relative to GITHUB_WORKSPACE containing pipeline vars'
     required: false
+  pipeline-paused:
+    description: 'true/false if pipeline should get unpaused after set (default: true)'
+    default: 'true'
+    required: false
   username:
     description: 'A local auth user with the rights to trigger the job'
     required: true
@@ -39,3 +43,4 @@ runs:
     CONCOURSE_PIPELINE_NAME: ${{ inputs.pipeline-name }}
     CONCOURSE_PIPELINE_CONFIG: ${{ inputs.pipeline-config }}
     CONCOURSE_PIPELINE_VARS: ${{ inputs.pipeline-vars }}
+    CONCOURSE_PIPELINE_PAUSED: ${{ inputs.pipeline-paused }}
