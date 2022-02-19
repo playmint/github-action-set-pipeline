@@ -16,6 +16,6 @@ fi
 
 fly -t self set-pipeline \
 	--non-interactive \
-	-p "${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_NAME}" \
+	-p "${CONCOURSE_PIPELINE_NAME}" \
 	-c "${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_CONFIG}" \
 	${OPTIONAL_ARGS}
