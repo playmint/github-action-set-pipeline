@@ -1,0 +1,17 @@
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: A job to check the action works
+    steps:
+    - name: Hello world action step
+      id: hello
+      uses: playmint/github-action-set-pipeline@v1
+      with:
+        url: ${{ secrets.CONCOURSE_URL }}
+        username: ${{ secrets.CONCOURSE_USERNAME }}
+        password: ${{ secrets.CONCOURSE_PASSWORD }}
+        team: main
+        pipeline: action-example
