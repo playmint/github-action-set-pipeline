@@ -1,6 +1,6 @@
 # action.yml
 name: 'Set Concourse Pipeline'
-author: Playmint
+author: playmint
 description: 'Configures a concourse pipeline'
 branding:
   icon: plus-circle
@@ -22,19 +22,19 @@ inputs:
   vars_files:
     description: 'JSON blob of paths to YAML files containing pipeline variables'
     required: false
-  concourse-username:
+  username:
     description: 'A local auth user with the rights to trigger the job'
     required: true
-  concourse-password:
+  password:
     description: 'The password for concourse-user'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    CONCOURSE_URL: ${{ inputs.concourse-url }}
-    CONCOURSE_USERNAME: ${{ inputs.concourse-username }}
-    CONCOURSE_PASSWORD: ${{ inputs.concourse-password }}
-    CONCOURSE_TEAM: ${{ inputs.concourse-team }}
+    CONCOURSE_URL: ${{ inputs.url }}
+    CONCOURSE_USERNAME: ${{ inputs.username }}
+    CONCOURSE_PASSWORD: ${{ inputs.password }}
+    CONCOURSE_TEAM: ${{ inputs.team }}
   args:
   - pipelines
