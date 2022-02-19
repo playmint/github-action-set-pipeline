@@ -13,14 +13,14 @@ inputs:
     description: 'The concourse team where the pipeline lives'
     required: true
     default: 'main'
-  pipeline:
+  pipeline-name:
     description: 'The concourse pipeline where the job lives'
     required: true
-  vars:
-    description: 'JSON blob of pipeline variables'
-    required: false
-  vars_files:
-    description: 'JSON blob of paths to YAML files containing pipeline variables'
+  pipeline-config:
+    description: 'path to a YAML file relative to GITHUB_WORKSPACE containing pipeline config'
+    required: true
+  pipeline-vars:
+    description: 'path to a YAML file relative to GITHUB_WORKSPACE containing pipeline vars'
     required: false
   username:
     description: 'A local auth user with the rights to trigger the job'
@@ -36,5 +36,6 @@ runs:
     CONCOURSE_USERNAME: ${{ inputs.username }}
     CONCOURSE_PASSWORD: ${{ inputs.password }}
     CONCOURSE_TEAM: ${{ inputs.team }}
-  args:
-  - pipelines
+    CONCOURSE_PIPELINE_NAME: ${{ inputs.pipeline-name }}
+    CONCOURSE_PIPELINE_CONFIG: ${{ inputs.pipeline-config }}
+    CONCOURSE_PIPELINE_VARS: ${{ inputs.pipeline-vars }}
