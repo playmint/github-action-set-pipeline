@@ -14,7 +14,7 @@ if [[ ! -z "${CONCOURSE_PIPELINE_VARS}" ]]; then
 	OPTIONAL_ARGS="-l ${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_VARS}"
 fi
 
-fly -t self set-pipieline \
+fly -t self set-pipeline \
 	--non-interactive \
 	-p "${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_NAME}" \
 	-c "${GITHUB_WORKSPACE}/${CONCOURSE_PIPELINE_CONFIG}" \
